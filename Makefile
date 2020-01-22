@@ -11,7 +11,7 @@ endif
 OBJS= src/lua_ldap.o $(COMPAT_O)
 
 src/$(LIBNAME): $(OBJS)
-	export MACOSX_DEPLOYMENT_TARGET="10.3"; $(CC) $(CFLAGS) $(LIB_OPTION) -o src/$(LIBNAME) $(OBJS) $(OPENLDAP_LIB)
+	export MACOSX_DEPLOYMENT_TARGET="10.4.0"; $(CC) $(CFLAGS) $(LIB_OPTION) -o src/$(LIBNAME) $(OBJS)
 
 $(COMPAT_DIR)/compat-5.1.o: $(COMPAT_DIR)/compat-5.1.c
 	$(CC) -c $(CFLAGS) -o $@ $(COMPAT_DIR)/compat-5.1.c
