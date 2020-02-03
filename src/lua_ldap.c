@@ -1044,7 +1044,10 @@ static int lualdap_open_simple (lua_State *L) {
 
     if (hostname_len > 248)
       return faildirect(L, LUALDAP_PREFIX "Hostname is too large");
-    uri = alloca(hostname_len + 8);
+    /* new gcc not support alloca, use char[size] after C99
+       uri = alloca(hostname_len + 8); */
+    char tmp[hostname_len + 8];
+    uri = (char *)tmp;
     strcpy(uri, "ldap://");
     strcat(uri, hostname);
 
